@@ -13,17 +13,17 @@ class App (Frame):
         #self.entryData = Entry(self, width = 100)
         #self.entryData.pack()
         #self.entryData.grid(row=0, column=0, sticky=N)
-        self.inputText = Text(self, width = 100, height = 10)
+        self.inputText = Text(self, width = 200, height = 10)
         self.inputText.insert(INSERT, '请输入需要转换的数据')
         self.inputText.grid(row=0, column=0, sticky=N)
         
-        self.outText = Text(self, width = 100, height = 10)
+        self.outText = Text(self, width = 200, height = 10)
         self.outText.grid(row=11, column=0, sticky=N)
         
         #初始化转换类型的框
         #self.entryTranType = Entry(self, width = 100)
         #self.entryTranType.pack()
-        self.cmbEditComboList = ['1：函数命名转换','2：变量命名转换', '3：全局变量命名转换']
+        self.cmbEditComboList = ['1：函数命名转换','2：变量命名转换', '3：全局变量命名转换', '4：函数转换']
         self.cmbEditCombo = Combobox(values=self.cmbEditComboList)
         self.cmbEditCombo.set('请选择转换类型')
         self.cmbEditCombo['state'] = 'readonly'
@@ -82,8 +82,7 @@ class App (Frame):
         List = List[1:]
         
         strTmp = 'Vaapi_'
-        strTmp += self.upFirstCode(List)
-        strTmp += self.upFirstCode(List) + '\n'
+        strTmp += self.upFirstCode(List)  + '\n'
         #self.dataCtx.set(strTmp)
         #self.inputText.delete(0.0, END)
         self.outText.insert(INSERT,strTmp)
@@ -161,6 +160,8 @@ class App (Frame):
                 self.VarNameChg(i, '')
             elif type == 3:
                 self.VarNameChg(i, 'H265')
+            elif type == 4:
+                self.funcNameChg(i)
     
     def printCtx(self, event):
         #print(self.dataCtx.get())
