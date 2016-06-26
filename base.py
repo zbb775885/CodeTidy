@@ -33,10 +33,15 @@ class App (Frame):
         #初始化按钮
         self.buttonStart = Button(self, text = "Start", command = self.work)
         #self.buttonStart.pack()
-        self.buttonStart.grid(row=2, column=0, sticky=N)
-      
+        self.buttonStart.grid(row=2, column=0, sticky=N)      
         #self.buttonStart.pack()
         self.buttonStart.grid(row=2, column=0, sticky=N)
+        
+        self.buttonStart = Button(self, text = "Clear", command = self.clear)
+        #self.buttonStart.pack()
+        self.buttonStart.grid(row=3, column=0, sticky=N)      
+        #self.buttonStart.pack()
+        self.buttonStart.grid(row=3, column=0, sticky=N)
         
         
         self.grid()
@@ -162,7 +167,9 @@ class App (Frame):
                 self.VarNameChg(i, 'H265')
             elif type == 4:
                 self.funcNameChg(i)
-    
+    def clear(self):
+        self.inputText.delete(0.0, END)
+        self.outText.delete(0.0, END)
     def printCtx(self, event):
         #print(self.dataCtx.get())
         #print(self.transCtx.get())
